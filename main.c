@@ -17,6 +17,7 @@ int main()
         int c=0,i;
         char ch;
         int f=0;
+        //can1_init();
         lcd_init();
         uart0_init(9600);
         //uart1_init(9600);
@@ -167,6 +168,7 @@ int main()
                         uart0_tx_string("MANUAL DOOR OPEN\r\n");
                         delay_ms(500);
                         uart0_tx_string("MANUAL DOOR CLOSE\r\n");
+                        servo_0();
                         ext0=0;
                 }
                 else if(ext1==1)
@@ -180,6 +182,12 @@ int main()
                 {
                         uart0_tx_string("Emergency Mode Activated\r\n");
                         //open door
+                        servo_180();
+                        uart0_tx_string("emergency DOOR OPEN\r\n");
+                        delay_ms(500);
+                        uart0_tx_string("emergency DOOR CLOSE\r\n");
+                         ext2=0;
+                        
                 }
         }
 }
